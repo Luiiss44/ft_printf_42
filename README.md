@@ -56,20 +56,20 @@ rm: Este comando elimina archivos.
 
 libftprintf.a: Esto elimina la librería estática creada.
 
-## Ejemplo Completo
+# Ejemplo Completo
 Aquí está el flujo completo de comandos para compilar, enlazar y ejecutar tu programa:
 
-# Compilar los archivos fuente en archivos de objeto
+## Compilar los archivos fuente en archivos de objeto
 gcc -c *.c
 
-# Crear la librería estática
+## Crear la librería estática
 ar rcs libftprintf.a *.o
 
-# Compilar el programa principal y enlazar la librería estática
+## Compilar el programa principal y enlazar la librería estática
 gcc main.c libftprintf.a -o test_ft_printf
 
-# Ejecutar el programa
+## Ejecutar el programa
 ./test_ft_printf
 
-# Limpiar archivos intermedios
+## Limpiar archivos intermedios
 rm *.o libftprintf.a
