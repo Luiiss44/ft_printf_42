@@ -8,57 +8,57 @@ Para compilar y ejecutar este proyecto, sigue los siguientes pasos utilizando lo
 
 ### Paso 1: Compilar los archivos fuente
 
-```sh
 gcc -c *.c
-gcc: Compilador de GNU para el lenguaje C.
--c: Compila los archivos sin combinarlos en un ejecutable.
-*.c: Compila todos los archivos con extensión .c en el directorio actual.
-Este comando genera archivos de objeto .o (por ejemplo, ft_printf.o) a partir de cada archivo fuente .c. Estos archivos de objeto contienen código compilado que aún no está listo para ser ejecutado.
 
-Paso 2: Crear la librería estática
-sh
-Copiar código
+gcc: Este es el compilador de GNU para el lenguaje C.
+-c: Le dice al compilador que compile los archivos, pero sin combinarlos en un programa ejecutable.
+*.c: Esto indica que el compilador debe compilar todos los archivos con la extensión .c en el directorio actual. Un archivo .c contiene el código fuente en lenguaje C.
+
+Resultado: Este comando genera archivos de objeto .o (por ejemplo, ft_printf.o) a partir de cada archivo fuente .c. Estos archivos de objeto contienen código compilado que aún no está listo para ser ejecutado porque no están enlazados entre sí.
+
+### Paso 2: Crear la librería estática
+
 ar rcs libftprintf.a *.o
-ar: Programa que crea, modifica y extrae archivos de bibliotecas.
-rcs: Opciones usadas juntas:
+
+ar: Este es un programa que crea, modifica y extrae archivos de bibliotecas. En este contexto, crea una librería estática.
+rcs: Son tres opciones usadas juntas:
 r: Reemplaza o añade archivos en la biblioteca.
 c: Crea la biblioteca si no existe.
-s: Crea un índice para la biblioteca, acelerando el acceso a sus componentes.
-libftprintf.a: Nombre de la librería estática creada.
-*.o: Incluye todos los archivos de objeto generados en el paso anterior.
-Este comando crea una librería estática llamada libftprintf.a, que agrupa todos los archivos de objeto en un solo archivo de biblioteca.
+s: Crea un índice para la biblioteca, lo que acelera el acceso a sus componentes.
 
-Paso 3: Compilar el programa principal y enlazar la librería estática
-sh
-Copiar código
+libftprintf.a: Es el nombre de la biblioteca estática que se está creando.
+*.o: Esto indica que todos los archivos de objeto .o generados en el paso anterior deben ser incluidos en la biblioteca.
+
+Resultado: Este comando crea una librería estática llamada libftprintf.a, que agrupa todos los archivos de objeto en un solo archivo de biblioteca.
+
+### Paso 3: Compilar el programa principal y enlazar la librería estática
+
 gcc main.c libftprintf.a -o test_ft_printf
-gcc: Compilador de GNU para el lenguaje C.
-main.c: Archivo fuente que contiene la función principal main.
-libftprintf.a: Librería estática creada en el paso anterior.
--o test_ft_printf: Especifica el nombre del archivo ejecutable resultante.
-Este comando compila main.c y enlaza el código con la librería estática libftprintf.a para crear un programa ejecutable llamado test_ft_printf.
+
+gcc: Nuevamente, este es el compilador de GNU para el lenguaje C.
+main.c: Es el archivo fuente que contiene la función principal main. Este es el punto de entrada del programa.
+libftprintf.a: Es la librería estática creada en el paso anterior que contiene el código compilado de las funciones de ft_printf.
+-o test_ft_printf: Esta opción le dice al compilador que el nombre del archivo ejecutable resultante debe ser test_ft_printf.
+
+Resultado: Este comando compila main.c y enlaza (combina) el código con la librería estática libftprintf.a para crear un programa ejecutable llamado test_ft_printf.
 
 Paso 4: Ejecutar el programa
-sh
-Copiar código
+
 ./test_ft_printf
-./test_ft_printf: Ejecuta el archivo test_ft_printf en el directorio actual.
-Este comando ejecuta el programa y deberías ver el texto "Hello, World!" impreso en la consola si ft_printf está implementado correctamente.
+./test_ft_printf: Este comando ejecuta el archivo test_ft_printf en el directorio actual. El prefijo ./ le dice al sistema operativo que busque el archivo en el directorio actual.
 
-Limpieza de archivos intermedios
-Para eliminar los archivos de objeto y la librería estática después de la compilación, usa los siguientes comandos:
+## Limpieza de archivos intermedios
+Si deseas eliminar los archivos de objeto y la librería estática después de la compilación, puedes usar los siguientes comandos:
 
-sh
-Copiar código
 rm *.o libftprintf.a
-rm: Comando para eliminar archivos.
-*.o: Elimina todos los archivos de objeto generados durante la compilación.
-libftprintf.a: Elimina la librería estática creada.
-Ejemplo Completo
+rm: Este comando elimina archivos.
+*.o: Esto elimina todos los archivos de objeto generados durante la compilación.
+
+libftprintf.a: Esto elimina la librería estática creada.
+
+## Ejemplo Completo
 Aquí está el flujo completo de comandos para compilar, enlazar y ejecutar tu programa:
 
-sh
-Copiar código
 # Compilar los archivos fuente en archivos de objeto
 gcc -c *.c
 
